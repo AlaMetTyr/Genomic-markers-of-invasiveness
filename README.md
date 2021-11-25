@@ -1,5 +1,5 @@
 # Identifying traits of invasiveness
-Analaysing reference genomes of invasive and non-invasive insect species to replicate the DIGS paper protcol by Huang et al 2020.
+Analaysing reference genomes of invasive and non-invasive insect species to replicate the DIGS paper protocol by Huang et al 2020.
 
 
 ## Downloading genomic data from NCBI
