@@ -48,4 +48,5 @@ Sequencing data downloaded for this shown below:
 -	Lepidoptera	*Spodoptera litura*	GCA_002706865.1	GCF_002706865.1
 
 ## Genome characteristics
-Prior to running genome characteristic scripts, repeats must be masked within the scaffolds to mask known repeat elements. Repeatmasker and appropriate libraries were installed locally before using the `RepeatMasker --species < > *.fa` command.
+Prior to running genome characteristic scripts, repeats must be masked within the scaffolds to mask known repeat elements. Repeatmasker and appropriate libraries were installed locally following insstrucitons found here: https://www.repeatmasker.org/RepeatMasker/ 
+before using the `perl RepeatMasker *.fa` command. 
