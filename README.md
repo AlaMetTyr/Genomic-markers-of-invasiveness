@@ -47,6 +47,17 @@ Sequencing data downloaded for this shown below:
 -	Diptera(Mosquito)	*Aedes aegypti*	GCA_002204515.1	GCF_002204515.2
 -	Lepidoptera	*Spodoptera litura*	GCA_002706865.1	GCF_002706865.1
 
+Expanded dataset of .fa an d annotatoins fo further speciers with no invasive classification/ low N50 were also downloade dand stored for later use.
+
 ## Genome characteristics
 Size of repeat elements were recorded. Repeatmasker and appropriate libraries were installed locally following insstrucitons found here: https://www.repeatmasker.org/RepeatMasker/ 
 before using the `perl RepeatMasker *.fa` command. 
+
+
+## OrthoMCL
+OrthoMCL was used as module on NeSI cluster to identify single copy orthologous genes and correspond to the DIGS paper.
+'orthomclAdjustFasta [taxon code] [fasta_file] [id_field]'
+'orthomclFilterFasta [input_directory_compliant_fasta] [minimum_protein_length] [maximum_percentage_stop_codon]'
+
+Then need to then run a local BLAStPvBASTP using the goodProteins.fasta file generated in the previous step as input file.
+OrthoML BLAST parser requires this step to be ran with the '-m 8' option to tab deliminate the output.
