@@ -56,8 +56,8 @@ before using the `perl RepeatMasker *.fa` command.
 
 ## OrthoMCL
 OrthoMCL was used as module on NeSI cluster to identify single copy orthologous genes and correspond to the DIGS paper.
-'orthomclAdjustFasta [taxon code] [fasta_file] [id_field]'
-'orthomclFilterFasta [input_directory_compliant_fasta] [minimum_protein_length] [maximum_percentage_stop_codon]'
+`orthomclAdjustFasta [taxon code] [fasta_file] [id_field]`
+`orthomclFilterFasta [input_directory_compliant_fasta] [minimum_protein_length] [maximum_percentage_stop_codon]`
 
 Then need to then run a local BLAStPvBASTP using the goodProteins.fasta file generated in the previous step as input file.
-OrthoML BLAST parser requires this step to be ran with the '-m 8' option to tab deliminate the output.
+OrthoML BLAST parser requires this step to be ran with the `-m 8` option to tab deliminate the output.
