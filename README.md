@@ -60,7 +60,7 @@ Step1: `orthomclAdjustFasta [taxon code] [fasta_file] [id_field]`
 
 Step 2: `orthomclFilterFasta [input_directory_compliant_fasta] [minimum_protein_length] [maximum_percentage_stop_codon]`
 
-Then need to then run a local BLAStPvBASTP using the goodProteins.fasta file generated in the previous step as input file.
+Then need to then run a local BLAStPvBLASTP using the goodProteins.fasta file generated in the previous step as input file.
 
 OrthoMCL BLAST parser requires this step to be ran with the `-m 8` option to tab deliminate the output.
 
