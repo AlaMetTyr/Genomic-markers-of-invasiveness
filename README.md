@@ -54,17 +54,21 @@ Size of repeat elements were recorded. Repeatmasker and appropriate libraries we
 before using the `perl RepeatMasker *.fa` command. 
 
 
-## OrthoMCL
-OrthoMCL was used as module on NeSI cluster to identify single copy orthologous genes and correspond to the DIGS paper.
-Step1: `orthomclAdjustFasta [taxon code] [fasta_file] [id_field]`
+## OrthoFinder
+OrthoFinder was used as module on NeSI cluster to identify single copy orthologous genes and correspond to the DIGS paper.
 
-Step 2: `orthomclFilterFasta [input_directory_compliant_fasta] [minimum_protein_length] [maximum_percentage_stop_codon]`
+'orthofinder -f ./' #runs orthofinder on default settings for proteinfasta files
 
-Then need to then run a local BLAStPvBLASTP using the goodProteins.fasta file generated in the previous step as input file.
+#Filtering and parsing output for input into cafe5.
 
-OrthoMCL BLAST parser requires this step to be ran with the `-m 8` option to tab deliminate the output.
+Removing gene families with large copy gene number variance: (from cafe5 tools file)
+'./clade_and_size_filter.py -i ./Orthogroups/Orthogroups2.txt -o filtered_cafe_input.txt -s'
 
-Step 3: `makeblastdb -in goodproteins.fasta -dbtype prot -out my_prot_blast_db` where goodproteins is the outpit from orthomclfilterfasta
-Step 4: `blastp -db my_prot_blast_db -query goodProteins.fasta -outfmt 6 -m 8 -out all-vs-all-prot.tsv -num_threads 4`
+Making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module rquiers the download of 'scripts_of' file form orthoinder main directory.
+'python make_ultrametric.py Species_Tree/SpeciesTree_rooted_node_labels.tre' 
 
-Step5: `OrthomclBlastParser all-vs-all-prot.tsv ./ >> similarsequences.txt`
+## Running Cafe5
+cafe5 uses input ofOrthoFinder orthogroups file and an ultrametric tree to analyze change in gene family sie that accounts for phylogenetic history within the clade.
+
+'/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre'
+Average distance from root to leaves: 0.526572
