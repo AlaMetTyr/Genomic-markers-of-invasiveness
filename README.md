@@ -57,18 +57,18 @@ before using the `perl RepeatMasker *.fa` command.
 ## OrthoFinder
 OrthoFinder was used as module on NeSI cluster to identify single copy orthologous genes and correspond to the DIGS paper.
 
-'orthofinder -f ./' #runs orthofinder on default settings for proteinfasta files
+`orthofinder -f ./` #runs orthofinder on default settings for proteinfasta files
 
 #Filtering and parsing output for input into cafe5.
 
 Removing gene families with large copy gene number variance: (from cafe5 tools file)
-'./clade_and_size_filter.py -i ./Orthogroups/Orthogroups2.txt -o filtered_cafe_input.txt -s'
+`./clade_and_size_filter.py -i ./Orthogroups/Orthogroups2.txt -o filtered_cafe_input.txt -s`
 
 Making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module rquiers the download of 'scripts_of' file form orthoinder main directory.
-'python make_ultrametric.py Species_Tree/SpeciesTree_rooted_node_labels.tre' 
+`python make_ultrametric.py Species_Tree/SpeciesTree_rooted_node_labels.tre` 
 
 ## Running Cafe5
 cafe5 uses input ofOrthoFinder orthogroups file and an ultrametric tree to analyze change in gene family sie that accounts for phylogenetic history within the clade.
 
-'/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre'
+`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre`
 Average distance from root to leaves: 0.526572
