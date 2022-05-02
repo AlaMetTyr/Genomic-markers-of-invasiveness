@@ -71,4 +71,6 @@ Making the species tree generated ultrametric: (additional tool availble form Or
 cafe5 uses input ofOrthoFinder orthogroups file and an ultrametric tree to analyze change in gene family sie that accounts for phylogenetic history within the clade.
 
 `/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre`
+
 Average distance from root to leaves: 0.526572
+Lambda: 0.8573758077929
