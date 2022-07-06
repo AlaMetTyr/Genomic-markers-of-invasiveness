@@ -77,4 +77,4 @@ Lambda: 0.8573758077929
 
 ## Filtering the data based on largest and smallest expansion/ contraction indexes
 
-' gawk  'BEGIN{FS=OFS=","}NR>1{for(i=1;i<=25;i++)printf $i ","; print $26}' full_cafe_species.tab.csv > sampleInv.csv '
+`gawk  'BEGIN{FS=OFS=","}NR>1{for(i=1;i<=25;i++)printf $i ","; print $26}' full_cafe_species.tab.csv > sampleInv.csv`
