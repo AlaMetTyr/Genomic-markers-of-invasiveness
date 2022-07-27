@@ -60,11 +60,12 @@ OrthoFinder was used as module on NeSI cluster to identify single copy orthologo
 `orthofinder -f ./` #runs orthofinder on default settings for proteinfasta files
 
 #Filtering and parsing output for input into cafe5.
+the orthogroups file must be manipulated to remove the total genes and include a description column before exporting as a text file for filtering.
 
 Removing gene families with large copy gene number variance: (from cafe5 tools file)
 `./clade_and_size_filter.py -i ./Orthogroups/Orthogroups2.txt -o filtered_cafe_input.txt -s`
 
-Making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module rquiers the download of 'scripts_of' file form orthoinder main directory.
+Making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module requires the download of 'scripts_of' file form orthoinder main directory.
 `python make_ultrametric.py Species_Tree/SpeciesTree_rooted_node_labels.tre` 
 
 ## Running Cafe5
