@@ -87,3 +87,6 @@ Lambda: 0.8573758077929
 ## Filtering the data based on largest and smallest expansion/ contraction indexes
 
 `gawk  'BEGIN{FS=OFS=","}NR>1{for(i=1;i<=25;i++)printf $i ","; print $26}' full_cafe_species.tab.csv > sampleInv.csv`
+
+## Initial ML predictions using WEKA
+Weka is a collection of machine learning algorithms for data mining from the Computing and Mathematical Sciences department at Waikato University.
