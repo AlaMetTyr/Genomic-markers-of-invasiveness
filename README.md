@@ -60,11 +60,11 @@ OrthoFinder was used as module on NeSI cluster to identify single copy orthologo
 `orthofinder -f ./` #runs orthofinder on default settings for proteinfasta files
 Further options are useful if starting analysis using already determined BLAST data or OrthoFinder output files.
 
-`-fg` Start analysis from orthogroups OrthoFinder directory
+  `-fg` Start analysis from orthogroups OrthoFinder directory
 
-`-ft` Start analysis from gene trees in OrthoFinder directory
+  `-ft` Start analysis from gene trees in OrthoFinder directory
 
-`-M msa` Use MSA gene tree inference
+  `-M msa` Use MSA gene tree inference
 
 
 #Filtering and parsing output for input into cafe5.
