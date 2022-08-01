@@ -58,6 +58,9 @@ before using the `perl RepeatMasker *.fa` command.
 OrthoFinder was used as module on NeSI cluster to identify single copy orthologous genes and correspond to the DIGS paper.
 
 `orthofinder -f ./` #runs orthofinder on default settings for proteinfasta files
+Further options are useful if starting analysis using already determined BLAST data or OrthoFinder output files.
+`-fg` Start analysis from orthogroups OrthoFinder directory
+`-ft` Start analysis from gene trees in OrthoFinder directory
 
 #Filtering and parsing output for input into cafe5.
 the orthogroups file must be manipulated to remove the total genes and include a description column before exporting as a text file for filtering.
