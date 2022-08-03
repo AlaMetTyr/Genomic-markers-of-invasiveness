@@ -90,3 +90,4 @@ Lambda: 0.8573758077929
 
 ## Initial ML predictions using WEKA
 Weka is a collection of machine learning algorithms for data mining from the Computing and Mathematical Sciences department at Waikato University.
+Data can be uploaded as a filtered .csv file with a column for defining invasive and none invasive. SHould appear on the explorer page as having two variables (invasive and non-invasive).
