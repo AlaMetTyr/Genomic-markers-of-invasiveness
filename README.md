@@ -73,16 +73,17 @@ If doing this manually, file needs to be EOI converted in notepad ++ before usin
 
 Launch notepad++ > open file > click edit > EOI conversion > Unix > save
 
-Removing gene families with large copy gene number variance: (from cafe5 tools file)
-`for f in *.tsv.txt`
-  `do python clade_and_size_filter.py -i ${f%.*}.txt -o output${f%.*}.txt`
-  `done`
+Removing gene families with large copy gene number variance: (from cafe5 tools file)  
+
+`for f in *.tsv.txt`  
+  `do python clade_and_size_filter.py -i ${f%.*}.txt -o output${f%.*}.txt`  
+  `done`  
 
 Making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module requires the download of 'scripts_of' file form orthofinder main directory.
 
-`for f in *.tree`
-  `do python make_ultrametric.py -i ${f%.*}.tree`
-  `done`
+`for f in *.tree`  
+  `do python make_ultrametric.py -i ${f%.*}.tree`  
+  `done`  
 
 ## Running Cafe5
 cafe5 uses input of OrthoFinder orthogroups file and an ultrametric tree to analyze change in gene family sie that accounts for phylogenetic history within the clade.
@@ -91,16 +92,12 @@ cafe5 uses input of OrthoFinder orthogroups file and an ultrametric tree to anal
 
 or
 
-`for f in *.tsv.txt; do`
-`base_name=${f%_Orthogroups.GeneCount.tsv.txt}`
-`ID=${base_name#*_}`
-`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i "${f%}" -t "${ID}_SpeciesTree_rooted.tree.ultrametric.tre" > "output_${ID}.out"`
-`done`
+`for f in *.tsv.txt; do`  
+`base_name=${f%_Orthogroups.GeneCount.tsv.txt}`  
+`ID=${base_name#*_}`  
+`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i "${f%}" -t "${ID}_SpeciesTree_rooted.tree.ultrametric.tre" > "output_${ID}.out"`  
+`done`  
 
-
-
-Average distance from root to leaves: 0.526572
-Lambda: 0.8573758077929
 
 ## Filtering the data based on largest and smallest expansion/ contraction indexes
 
