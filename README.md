@@ -67,19 +67,37 @@ Further options are useful if starting analysis using already determined BLAST d
   `-M msa` Use MSA gene tree inference
 
 
-#Filtering and parsing output for input into cafe5.
-the orthogroups file must be manipulated to remove the total genes and include a description column before exporting as a text file for filtering.
+# Filtering and parsing output for input into cafe5.
+The orthogroups file must be manipulated to remove the total genes and include a description column before exporting as a text file for filtering.
+If doing this manually, file needs to be EOI converted in notepad ++ before using cafe5.
+
+Launch notepad++ > open file > click edit > EOI conversion > Unix > save
 
 Removing gene families with large copy gene number variance: (from cafe5 tools file)
-`./clade_and_size_filter.py -i ./Orthogroups/Orthogroups2.txt -o filtered_cafe_input.txt -s`
+`for f in *.tsv.txt`
+  `do python clade_and_size_filter.py -i ${f%.*}.txt -o output${f%.*}.txt`
+  `done`
 
-Making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module requires the download of 'scripts_of' file form orthoinder main directory.
-`python make_ultrametric.py Species_Tree/SpeciesTree_rooted_node_labels.tre` 
+Making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module requires the download of 'scripts_of' file form orthofinder main directory.
+
+`for f in *.tree`
+  `do python make_ultrametric.py -i ${f%.*}.tree`
+  `done`
 
 ## Running Cafe5
-cafe5 uses input ofOrthoFinder orthogroups file and an ultrametric tree to analyze change in gene family sie that accounts for phylogenetic history within the clade.
+cafe5 uses input of OrthoFinder orthogroups file and an ultrametric tree to analyze change in gene family sie that accounts for phylogenetic history within the clade.
 
 `/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre`
+
+or
+
+`for f in *.tsv.txt; do`
+`base_name=${f%_Orthogroups.GeneCount.tsv.txt}`
+`ID=${base_name#*_}`
+`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i "${f%}" -t "${ID}_SpeciesTree_rooted.tree.ultrametric.tre" > "output_${ID}.out"`
+`done`
+
+
 
 Average distance from root to leaves: 0.526572
 Lambda: 0.8573758077929
