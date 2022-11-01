@@ -109,15 +109,22 @@ Data can be uploaded as a filtered .csv file with a column for defining invasive
 
 
 
-### Pfam and GOTERM approach
+# Pfam and GOTERM approach
 For this approach, pfam families were identified from Eli's popgen candidate gene identification and searched against the output for orthofinder ortholog sequences.
 This was done using interproscan.
 
 For this, as these are orthologous genes and generally retain the same funciton, preliminary data was identified by removing all but the first sequence in each multifasta alignment file using the following command:
 `sed '/>/{x;/./Q;x;h}' OG0000000-Copy1.fa`
 
-only multiple files this would be as follows:
+On multiple files this would be as follows:
 
 `for f in *.fa; do`  
   `sed '/>/{x;/./Q;x;h}' ${f%.*}.fa > ./single_sequences/single_${f%.*}.fa`  
   `done`   
+
+before running the following interproscan command:
+
+`for f in *.fa; do`
+  `interproscan.sh -i ./${f%*} -appl Pfam --goterms` 
+`done`
+
