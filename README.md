@@ -128,3 +128,5 @@ before running the following interproscan command:
   `interproscan.sh -i ./${f%*} -appl Pfam --goterms` 
 `done`
 
+merge results into one .tsc file
+`awk '(NR == 1) || (FNR > 1)' *.fa.tsv > combined.tsv`
