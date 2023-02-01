@@ -65,6 +65,8 @@ Further options are useful if starting analysis using already determined BLAST d
   `-ft` Start analysis from gene trees in OrthoFinder directory
 
   `-M msa` Use MSA gene tree inference
+  
+Using 29 full insect .faa files, 50-60GB shuld be sufficient with a 2 day run time over 2 CPUs.
 
 
 # Filtering and parsing output for input into cafe5.
