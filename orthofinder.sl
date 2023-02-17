@@ -11,6 +11,6 @@ module load OrthoFinder/2.5.2-gimkl-2020a-Python-3.8.2
 
 for f in *.faa
 do 
-  orthofinder -f ./${f%*} 
+  orthofinder -f ./${f%.faa} 
 done
 
