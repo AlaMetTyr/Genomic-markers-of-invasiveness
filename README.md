@@ -90,14 +90,14 @@ Making the species tree generated ultrametric: (additional tool availble form Or
 ## Running Cafe5
 cafe5 uses input of OrthoFinder orthogroups file and an ultrametric tree to analyze change in gene family sie that accounts for phylogenetic history within the clade.
 
-`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre`
+`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre` -o output_directory`
 
 or
 
 `for f in *.tsv.txt; do`  
 `base_name=${f%_Orthogroups.GeneCount.tsv.txt}`  
 `ID=${base_name#*_}`  
-`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i "${f%}" -t "${ID}_SpeciesTree_rooted.tree.ultrametric.tre" > "output_${ID}.out"`  
+`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i "${f%}" -t "${ID}_SpeciesTree_rooted.tree.ultrametric.tre" -o "output_${ID}"  
 `done`  
 
 
