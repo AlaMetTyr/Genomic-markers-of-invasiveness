@@ -74,31 +74,36 @@ The orthogroups file must be manipulated to remove the total genes and include a
 If doing this manually, file needs to be EOI converted in notepad ++ before using cafe5. or:
 
 `cp input.csv output.txt`
-`head -1 input.txt | tr '\t' '\n' | nl`  ## identify the column number
-`awk -F'\t' '{ $28=""; print $0 }' OFS='\t' orthogroups.txt | sed 's/\t\t/\t/g' > orthogroups1.txt`  ## remove the column
-`awk -F'\t' 'BEGIN {OFS=FS} { $2="NULL\t"$2; print }' orthogroups1.txt > orthogroups2.txt` ## add the descriptoin column
-`dos2unix orthogroups2.txt`
+`head -1 input.txt | tr '\t' '\n' | nl`  ## identify the column number  
+`awk -F'\t' '{ $28=""; print $0 }' OFS='\t' orthogroups.txt | sed 's/\t\t/\t/g' > orthogroups1.txt`  ## remove the column  
+`awk -F'\t' 'BEGIN {OFS=FS} { $2="NULL\t"$2; print }' orthogroups1.txt > orthogroups2.txt` ## add the descriptoin column  
+`dos2unix orthogroups2.txt`  
 
- 
+ OR manually...
 
-Launch notepad++ > open file > click edit > EOI conversion > Unix > save
+Launch notepad++ > open file > click edit > EOI conversion > Unix > save  
+Removing gene families with large copy gene number variance: (from cafe5 tools file)    
 
-Removing gene families with large copy gene number variance: (from cafe5 tools file)  
 
+You need to have a folder called `scripts_of` which I think is downloaded from the GitHub for Orthofinder. and must be in your working directory to work.  
 `for f in *.tsv.txt`  
   `do python clade_and_size_filter.py -i ${f%.*}.txt -o output${f%.*}.txt`  
   `done`  
+  I couldnt get this to work for ages, and had to manually adjust the script to make it ignore the headers as it was failing for the species names being non numeric. coming as a ValueError.  
 
-Making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module requires the download of 'scripts_of' file form orthofinder main directory.
+Then make the species tree ultrametric. This script comes seperately (I'll update whe I remember if its from orthofinder or from Cafe5) 
+making the species tree generated ultrametric: (additional tool availble form OrthoFinder github. If using Orthofinder as a module requires the download of 'scripts_of' file form orthofinder main directory as above.
 
 `for f in *.tree`  
-  `do python make_ultrametric.py -i ${f%.*}.tree`  
+  `do python make_ultrametric.py ${f%.*}.txt`  
   `done`  
+
+  For one tree you just need to run `python make_ultrametric.py  SpeciesTree_rooted.txt`  
 
 ## Running Cafe5
 cafe5 uses input of OrthoFinder orthogroups file and an ultrametric tree to analyze change in gene family sie that accounts for phylogenetic history within the clade.
 
-`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre` -o output_directory`
+`/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i filtered_cafe_input.txt -t Species_Tree/SpeciesTree_rooted_node_labels.tre.ultrametric.tre` 
 
 or
 
