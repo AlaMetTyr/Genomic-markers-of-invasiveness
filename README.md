@@ -113,6 +113,7 @@ or
 `/nesi/project/ga03488/software/CAFE5/bin/cafe5 -i "${f%}" -t "${ID}_SpeciesTree_rooted.tree.ultrametric.tre" -o "output_${ID}"  
 `done`  
 
+For this, I had some errors when getting the file to run. Make sure your input is unix ending by running `file yourfile.txt'. Also, error for saying species is not found, it could be the input is space delimited and not tab delimited.  
 
 ## Filtering the data based on largest and smallest expansion/ contraction indexes
 
