@@ -71,7 +71,15 @@ Using 29 full insect .faa files, 50-60GB shuld be sufficient with a 2 day run ti
 
 # Filtering and parsing output for input into cafe5.
 The orthogroups file must be manipulated to remove the total genes and include a description column before exporting as a text file for filtering.
-If doing this manually, file needs to be EOI converted in notepad ++ before using cafe5.
+If doing this manually, file needs to be EOI converted in notepad ++ before using cafe5. or:
+
+`cp input.csv output.txt`
+`head -1 input.txt | tr '\t' '\n' | nl`  ## identify the column number
+`awk -F'\t' '{ $28=""; print $0 }' OFS='\t' orthogroups.txt | sed 's/\t\t/\t/g' > orthogroups1.txt`  ## remove the column
+`awk -F'\t' 'BEGIN {OFS=FS} { $2="NULL\t"$2; print }' orthogroups1.txt > orthogroups2.txt` ## add the descriptoin column
+`dos2unix orthogroups2.txt`
+
+ 
 
 Launch notepad++ > open file > click edit > EOI conversion > Unix > save
 
