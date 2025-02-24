@@ -57,7 +57,7 @@ Expanded dataset of .fa an d annotatoins fo further speciers with no invasive cl
 Size of repeat elements were recorded. Repeatmasker and appropriate libraries were installed locally following insstrucitons found here: https://www.repeatmasker.org/RepeatMasker/ 
 before using the `perl RepeatMasker *.fa` command. 
 
-## pre process for Orthofinder
+## Preprocess for Orthofinder
 Going to do a comparison of the output when filtered for longest isoform vs not filtered (cafe5 requires filtered so will definitely use this anyways).  
 
 `for f in *fa`   
