@@ -1,6 +1,10 @@
+The below is a tutorial and reminder for myself of the steps I took in large scale data analysis for multiple invasive species whole genomes to assess the expansion and contraction of various ortholog genes.  
+Theres an official tutorial for the use of orthofinder here: https://davidemms.github.io/menu/tutorials.html  
+Theres also a good walk through of Cafe5 here: https://github.com/hahnlab/CAFE5/blob/master/docs/tutorial/tutorial.md  
+These are the best resources if you're looking for a solid tutorial!  	
+
 # Identifying traits of invasiveness
 Analaysing reference genomes of invasive and non-invasive insect species to replicate the DIGS paper protocol by Huang et al 2020.
-
 
 ## Downloading genomic data from NCBI
 Whole genome assembly data for each of the assigned invasive and non-invasive species was downloaded from the NCBI GenBank database as .tar files.
@@ -53,6 +57,15 @@ Expanded dataset of .fa an d annotatoins fo further speciers with no invasive cl
 Size of repeat elements were recorded. Repeatmasker and appropriate libraries were installed locally following insstrucitons found here: https://www.repeatmasker.org/RepeatMasker/ 
 before using the `perl RepeatMasker *.fa` command. 
 
+## pre process for Orthofinder
+Going to do a comparison of the output when filtered for longest isoform vs not filtered (cafe5 requires filtered so will definitely use this anyways).  
+
+`for f in *fa`   
+`do python ./primary_transcript.py $f`   
+`done`  
+
+This script is available in the orthofinder Github under /tools https://github.com/davidemms/OrthoFinder/tree/master/tools  
+
 
 ## OrthoFinder
 OrthoFinder was used as module on NeSI cluster to identify single copy orthologous genes and correspond to the DIGS paper.
@@ -85,7 +98,7 @@ Launch notepad++ > open file > click edit > EOI conversion > Unix > save
 Removing gene families with large copy gene number variance: (from cafe5 tools file)    
 
 
-You need to have a folder called `scripts_of` which I think is downloaded from the GitHub for Orthofinder. and must be in your working directory to work.  
+You need to have a folder called `scripts_of` which is downloaded from the GitHub for Orthofinder (here: https://github.com/davidemms/OrthoFinder). and must be in your working directory to work.  
 `for f in *.tsv.txt`  
   `do python clade_and_size_filter.py -i ${f%.*}.txt -o output${f%.*}.txt`  
   `done`  
@@ -122,7 +135,6 @@ For this, I had some errors when getting the file to run. Make sure your input i
 ## Initial ML predictions using WEKA
 Weka is a collection of machine learning algorithms for data mining from the Computing and Mathematical Sciences department at Waikato University.
 Data can be uploaded as a filtered .csv file with a column for defining invasive and none invasive. SHould appear on the explorer page as having two variables (invasive and non-invasive).
-
 
 
 # Pfam and GOTERM approach
